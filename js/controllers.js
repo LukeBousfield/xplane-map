@@ -40,7 +40,6 @@ function LocationController($scope, $routeParams, getLocations, $sce) {
   };
   
   var getMap = function (lat, lng) {
-    console.log('HELLO MAP!');
     var mapElem = document.getElementById('map');
     console.log(mapElem);
     console.log(lat + ':' + lng);
@@ -69,7 +68,8 @@ function LocationController($scope, $routeParams, getLocations, $sce) {
     var path = new google.maps.Polyline({
       path: coords,
       geodesic: true,
-      strokeColor: '#0eacff'
+      strokeColor: '#0eacff',
+      strokeWeight: 8
     });
 
     path.setMap(map);
