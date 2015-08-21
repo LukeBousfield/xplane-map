@@ -36,7 +36,7 @@ function LocationController($scope, $routeParams, getLocations, $sce) {
         $scope.location = location;
         var geocoder = new google.maps.Geocoder();
         geocoder.geocode({
-          address: $scope.location.city + ', ' + $scope.location.state
+          address: $scope.location.city + ', ' + $scope.location.state + ' Airport'
         }, cb);
       }
     });
