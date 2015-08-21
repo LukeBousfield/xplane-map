@@ -28,16 +28,13 @@ function LocationController($scope, $routeParams, getLocations, $sce) {
   var id = parseInt($routeParams.id);
   
   var onLocations = function (data) {
-    console.log('HELLO!');
     var locations = data.data;
+    console.log(locations);
     locations.forEach(function (location, i) {
-      console.log(i, id);
       if (i === id) {
+        console.log(location);
         $scope.location = location;
-        var geocoder = new google.maps.Geocoder();
-        geocoder.geocode({
-          address: $scope.location.city + ', ' + $scope.location.state + ' Airport'
-        }, cb);
+        cb(location.lat, location.lng);
       }
     });
   };
@@ -84,7 +81,7 @@ function LocationController($scope, $routeParams, getLocations, $sce) {
       },
       map: map,
       label: 'A',
-      title: 'Boise, Idaho'
+      title: 'Boise Airport'
     });
     
     var destPointer = new google.maps.Marker({
@@ -99,14 +96,8 @@ function LocationController($scope, $routeParams, getLocations, $sce) {
     
   };
   
-  var cb = function (results, status) {
-    if (status === google.maps.GeocoderStatus.OK) {
-      var lat = results[0].geometry.location.lat();
-      var lng = results[0].geometry.location.lng();
-      getMap(lat, lng);
-    } else {
-      console.error('Error getting city with error ' + status);
-    }
+  var cb = function (lat, lng) {
+    getMap(lat, lng);
   };
   
   var fail = function (data) {
