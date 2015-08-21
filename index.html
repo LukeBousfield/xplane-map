@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="xplaneMap">
+<head>
+  <meta charset="UTF-8">
+  <title>XPlane Map</title>
+  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap-theme.min.css">
+</head>
+<body>
+  <div class="container">
+   <div class="page-header">
+     <h1>XPlane Map</h1>
+     <h3>By Luke Bousfield</h3>
+   </div>
+    <div ng-view></div>
+  </div>
+</body>
+<!-- Google Maps API -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmbZexTen6N63G0bml3JVRdCKFVBIaI18"></script>
+<!-- Chance.js -->
+<script src="lib/chance/chance.js"></script>
+<!-- Angular.js -->
+<script src="lib/angular/angular.min.js"></script>
+<!-- Angular.js Routing -->
+<script src="lib/angular-route/angular-route.min.js"></script>
+<!-- Local JavaScript App -->
+<script src="js/app.js"></script>
+<!-- Local JavaScript Factories -->
+<script src="js/factories.js"></script>
+<!-- Local JavaScript Controllers -->
+<script src="js/controllers.js"></script>
+</html>

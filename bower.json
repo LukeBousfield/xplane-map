@@ -1,0 +1,9 @@
+{
+    "name": "xplane-map",
+    "dependencies": {
+      "angular": "",
+      "bootstrap": "",
+      "angular-route": "",
+      "chance": ""
+    }
+}
