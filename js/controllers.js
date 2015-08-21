@@ -24,7 +24,7 @@ function LocationsController($scope, getLocations, $location) {
   
 }
 
-function LocationController($scope, $routeParams, getLocations, $sce) {
+function LocationController($scope, $routeParams, getLocations, $sce, getZoomParams) {
   var id = parseInt($routeParams.id);
   
   var onLocations = function (data) {
@@ -76,6 +76,25 @@ function LocationController($scope, $routeParams, getLocations, $sce) {
     });
 
     path.setMap(map);
+    
+    var boisePointer = new google.maps.Marker({
+      position: {
+        lat: BOISE_LAT,
+        lng: BOISE_LNG
+      },
+      map: map,
+      title: 'Boise, Idaho'
+    });
+    
+    var destPointer = new google.maps.Marker({
+      position: {
+        lat: lat,
+        lng: lng
+      },
+      map: map,
+      title: $scope.location.city + ', ' + $scope.location.state
+    });
+    
   };
   
   var cb = function (results, status) {

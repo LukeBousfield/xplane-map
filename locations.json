@@ -1,26 +1,74 @@
 [
   {
-    "city": "San Antonio",
-    "state": "Texas",
+    "city": "San Francisco",
+    "state": "California",
     "eta": {
-      "hours": 3,
-      "minutes": 15
+      "hours": 1,
+      "minutes": 50
     }
   },
   {
-    "city": "Salt Lake City",
-    "state": "Utah",
+    "city": "Las Vegas",
+    "state": "Nevada",
     "eta": {
       "hours": 1,
+      "minutes": 21
+    }
+  },
+  {
+    "city": "Kansas City",
+    "state": "Kansas",
+    "eta": {
+      "hours": 2,
+      "minutes": 50
+    }
+  },
+  {
+    "city": "St. Louis",
+    "state": "Missouri",
+    "eta": {
+      "hours": 3,
+      "minutes": 17
+    }
+  },
+  {
+    "city": "Colombus",
+    "state": "Ohio",
+    "eta": {
+      "hours": 3,
+      "minutes": 57
+    }
+  },
+  {
+    "city": "Cleveland",
+    "state": "Ohio",
+    "eta": {
+      "hours": 4,
+      "minutes": 1
+    }
+  },
+  {
+    "city": "San Diego",
+    "state": "California",
+    "eta": {
+      "hours": 2,
       "minutes": 0
     }
   },
   {
-    "city": "Honolulu",
-    "state": "Hawaii",
+    "city": "Miami",
+    "state": "Florida",
     "eta": {
       "hours": 5,
-      "minutes": 3
+      "minutes": 14
+    }
+  },
+  {
+    "city": "Chicago",
+    "state": "Illionois",
+    "eta": {
+      "hours": 2,
+      "minutes": 52
     }
   }
 ]
