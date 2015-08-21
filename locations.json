@@ -2,16 +2,25 @@
   {
     "city": "San Antonio",
     "state": "Texas",
-    "eta": 8
-  },
-  {
-    "city": "Boise",
-    "state": "Idaho",
-    "eta": 4
+    "eta": {
+      "hours": 3,
+      "minutes": 15
+    }
   },
   {
     "city": "Salt Lake City",
     "state": "Utah",
-    "eta": 6
+    "eta": {
+      "hours": 1,
+      "minutes": 0
+    }
+  },
+  {
+    "city": "Honolulu",
+    "state": "Hawaii",
+    "eta": {
+      "hours": 5,
+      "minutes": 3
+    }
   }
 ]

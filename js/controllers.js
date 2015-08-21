@@ -52,7 +52,7 @@ function LocationController($scope, $routeParams, getLocations, $sce) {
         lat: lat,
         lng: lng
       },
-      zoom: 3
+      zoom: 4
     });
     
     var BOISE_LAT = 43.61871;

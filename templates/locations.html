@@ -2,5 +2,6 @@
 <h1>Locations</h1>
 <button class="btn btn-info" ng-click="random()">Random</button>
 <div class="location" ng-repeat="location in locations">
-  <a ng-href="/#/locs/{{ $index }}">{{ location.city }}, {{ location.state }}</a> ETA {{ location.eta }} hours
+  <a ng-href="/#/locs/{{ $index }}">{{ location.city }}, {{ location.state }}</a>
+  <eta hours="location.eta.hours" minutes="location.eta.minutes"></eta>
 </div>
