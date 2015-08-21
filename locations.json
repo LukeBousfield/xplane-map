@@ -70,5 +70,13 @@
       "hours": 2,
       "minutes": 52
     }
+  },
+  {
+    "city": "Little Rock",
+    "state": "Arkansas",
+    "eta": {
+      "hours": 3,
+      "minutes": 20
+    }
   }
 ]

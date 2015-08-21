@@ -24,7 +24,7 @@ function LocationsController($scope, getLocations, $location) {
   
 }
 
-function LocationController($scope, $routeParams, getLocations, $sce, getZoomParams) {
+function LocationController($scope, $routeParams, getLocations, $sce) {
   var id = parseInt($routeParams.id);
   
   var onLocations = function (data) {
@@ -83,6 +83,7 @@ function LocationController($scope, $routeParams, getLocations, $sce, getZoomPar
         lng: BOISE_LNG
       },
       map: map,
+      label: 'A',
       title: 'Boise, Idaho'
     });
     
@@ -92,6 +93,7 @@ function LocationController($scope, $routeParams, getLocations, $sce, getZoomPar
         lng: lng
       },
       map: map,
+      label: 'B',
       title: $scope.location.city + ', ' + $scope.location.state
     });
     
