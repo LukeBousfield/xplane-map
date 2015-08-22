@@ -24,7 +24,7 @@ function LocationsController($scope, getLocations, $location) {
   
 }
 
-function LocationController($scope, $routeParams, getLocations, $http) {
+function LocationController($scope, $routeParams, getLocations, $http, compHeading, $timeout) {
   
   var id = parseInt($routeParams.id);
   
@@ -69,31 +69,6 @@ function LocationController($scope, $routeParams, getLocations, $http) {
       },
       zoom: 4
     });
-  
-  setInterval(function () {
-    $http
-      .get('/test.txt')
-      .then(function (res) {
-        var data = res.data;
-        var parts = data.split(',');
-        var lat = parseInt(parts[0]);
-        var lng = parseInt(parts[1]);
-        var header = parseInt(parts[2]);
-        console.log(lat, lng, header);
-        new google.maps.Marker({
-          icon: {
-            url: 'https://upload.wikimedia.org/wikipedia/commons/c/c5/Airplane_silhouette.svg',
-            size: new google.maps.Size(20, 32)
-          },
-          rotation: header + 315,
-          position: {
-            lat: lat,
-            lng: lng
-          },
-          map: map
-        });
-      });
-  }, 500);
     
     var BOISE_LAT = 43.558467;
     var BOISE_LNG = -116.202134;
@@ -119,9 +94,7 @@ function LocationController($scope, $routeParams, getLocations, $http) {
         
         console.log(google.maps);
         
-        var heading = google.maps.geometry.spherical.computeHeading(new google.maps.LatLng(path.lat, path.lng), new google.maps.LatLng(nextPath.lat, nextPath.lng));
-        
-        heading = heading + 180;
+        var heading = compHeading(path.lat, path.lng, nextPath.lat, nextPath.lng);
         
         heading = Math.round(heading);
         
@@ -131,8 +104,8 @@ function LocationController($scope, $routeParams, getLocations, $http) {
             lng: path.lng
           },
           map: map,
-          label: 'T',
-          title: 'Turn, new heading ' + heading
+          label: 'F',
+          title: 'Final Approach, new heading ' + heading
         });
       });
     }
@@ -162,12 +135,14 @@ function LocationController($scope, $routeParams, getLocations, $http) {
     
     console.log(nextLat, nextLng);
     
-    var heading = google.maps.geometry.spherical.computeHeading(new google.maps.LatLng(BOISE_LAT, BOISE_LNG), new google.maps.LatLng(nextLat, nextLng));
-    console.log(heading);
-    
-    heading = heading + 180;
+    var heading = compHeading(BOISE_LAT, BOISE_LNG, nextLat, nextLng);
+    console.log(BOISE_LAT, BOISE_LNG, nextLat, nextLng);
     
     heading = Math.round(heading);
+    
+    $timeout(function () {
+      alert('ALERT: You have flown for 1 hour.  Cost is now $5.00');
+    }, 3600000);
     
     var boisePointer = new google.maps.Marker({
       position: {
