@@ -1,1 +1,6 @@
-<h2 ng-show="heading">ETA {{ hours }} hour(s) <span ng-show="minutes > 0">and {{ minutes }} minute(s)</span></h2>
+<h2 ng-show="heading">
+  ETA
+  <span ng-show="hours > 0">{{ hours }} hour(s)</span>
+  <span ng-show="minutes > 0 && hours > 0">and </span>
+  <span ng-show="minutes > 0">{{ minutes }} minute(s)</span>
+</h2>

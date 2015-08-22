@@ -2,11 +2,73 @@
   {
     "city": "Salt Lake City",
     "state": "Utah",
-    "lat": 40.790091,
-    "lng": -111.979049,
+    "lat": 40.805667,
+    "lng": -111.976760,
     "eta": {
-      "hours": 4,
+      "hours": 0,
+      "minutes": 45
+    },
+    "paths": [
+      {
+        "lat": 41.292054,
+        "lng": -111.993278
+      }
+    ]
+  },
+  {
+    "city": "San Francisco",
+    "state": "California",
+    "lat": 37.627063,
+    "lng": -122.378430,
+    "eta": {
+      "hours": 1,
       "minutes": 30
+    },
+    "paths": [
+      {
+        "lat": 37.922512,
+        "lng": -122.001622
+      }
+    ]
+  },
+  {
+    "city": "San Diego",
+    "state": "California",
+    "lat": 32.737298,
+    "lng": -117.205084,
+    "eta": {
+      "hours": 1,
+      "minutes": 55
+    }
+  },
+  {
+    "city": "Minneapolis",
+    "state": "Minnesota",
+    "lat": 44.884744,
+    "lng": -93.222252,
+    "eta": {
+      "hours": 2,
+      "minutes": 25
+    }
+  },
+  {
+    "city": "Honolulu",
+    "state": "Hawaii",
+    "lat": 21.314439,
+    "lng": -157.926318,
+    "eta": {
+      "hours": 7,
+      "mimutes": 55
+    }
+  },
+  {
+    "city":"Seattle",
+    "state": "Washington",
+    "lat": 47.463541,
+    "lng": -122.307886,
+    "eta": {
+      "hours": 1,
+      "minutes": 20
     }
   }
 ]

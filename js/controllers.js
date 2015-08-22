@@ -51,19 +51,52 @@ function LocationController($scope, $routeParams, getLocations, $sce) {
       zoom: 4
     });
     
-    var BOISE_LAT = 43.61871;
-    var BOISE_LNG = -116.21461;
+    var BOISE_LAT = 43.558467;
+    var BOISE_LNG = -116.202134;
 
     var coords = [
       {
         lat: BOISE_LAT,
         lng: BOISE_LNG
-      },
-      {
-        lat: lat,
-        lng: lng
       }
     ];
+    
+    if ($scope.location.paths) {
+      $scope.location.paths.forEach(function (path, i) {
+        coords.push(path);
+        if (i === $scope.location.paths.length - 1) {
+          var nextPath = {
+            lat: $scope.location.lat,
+            lng: $scope.location.lng
+          };
+        } else {
+          var nextPath = $scope.location.paths[i + 1];
+        }
+        
+        console.log(google.maps);
+        
+        var heading = google.maps.geometry.spherical.computeHeading(new google.maps.LatLng(path.lat, path.lng), new google.maps.LatLng(nextPath.lat, nextPath.lng));
+        
+        if (heading < 0) {
+          heading = heading + 360;
+        }
+        
+        new google.maps.Marker({
+          position: {
+            lat: path.lat,
+            lng: path.lng
+          },
+          map: map,
+          label: 'T',
+          title: 'Turn, new heading ' + heading
+        });
+      });
+    }
+    
+    coords.push({
+      lat: lat,
+      lng: lng
+    });
     
     var path = new google.maps.Polyline({
       path: coords,
@@ -74,6 +107,24 @@ function LocationController($scope, $routeParams, getLocations, $sce) {
 
     path.setMap(map);
     
+    if ($scope.location.paths && $scope.location.paths.length > 0) {
+      console.log($scope.location.paths[0]);
+      var nextLat = $scope.location.paths[0].lat;
+      var nextLng = $scope.location.paths[0].lng;
+    } else {
+      var nextLat = $scope.location.lat;
+      var nextLng = $scope.location.lng;
+    }
+    
+    console.log(nextLat, nextLng);
+    
+    var heading = google.maps.geometry.spherical.computeHeading(new google.maps.LatLng(BOISE_LAT, BOISE_LNG), new google.maps.LatLng(nextLat, nextLng));
+    console.log(heading);
+    
+    if (heading < 0) {
+      heading = heading + 360;
+    }
+    
     var boisePointer = new google.maps.Marker({
       position: {
         lat: BOISE_LAT,
@@ -81,7 +132,7 @@ function LocationController($scope, $routeParams, getLocations, $sce) {
       },
       map: map,
       label: 'A',
-      title: 'Boise Airport'
+      title: 'Boise Airport, following heading ' + heading
     });
     
     var destPointer = new google.maps.Marker({
