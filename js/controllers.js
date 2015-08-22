@@ -34,7 +34,25 @@ function LocationController($scope, $routeParams, getLocations, $sce) {
       if (i === id) {
         console.log(location);
         $scope.location = location;
-        cb(location.lat, location.lng);
+        if (location.lat && location.lng) {
+          cb(location.lat, location.lng);
+        } else {
+          console.log(google.maps.Geocoder);
+          var geocoder = new google.maps.Geocoder();
+          
+          var callCb = function (obj) {
+            if (status === google.maps.GeocoderStatus.OK) {
+              var lat = results[0].geometry.location.lat();
+              var lng = results[0].geometry.location.lng();
+              cb(lat, lng);
+            }
+          };
+          
+          geocoder.geocode({
+            address: location.city + ', ' + location.state + ' Airport'
+          }, callCb);
+          
+        }
       }
     });
   };
@@ -81,6 +99,8 @@ function LocationController($scope, $routeParams, getLocations, $sce) {
           heading = heading + 360;
         }
         
+        heading = Math.round(heading);
+        
         new google.maps.Marker({
           position: {
             lat: path.lat,
@@ -125,6 +145,8 @@ function LocationController($scope, $routeParams, getLocations, $sce) {
       heading = heading + 360;
     }
     
+    heading = Math.round(heading);
+    
     var boisePointer = new google.maps.Marker({
       position: {
         lat: BOISE_LAT,
@@ -132,7 +154,7 @@ function LocationController($scope, $routeParams, getLocations, $sce) {
       },
       map: map,
       label: 'A',
-      title: 'Boise Airport, following heading ' + heading
+      title: 'Boise Airport, follow heading ' + heading
     });
     
     var destPointer = new google.maps.Marker({
