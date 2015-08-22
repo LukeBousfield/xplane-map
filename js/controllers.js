@@ -95,9 +95,7 @@ function LocationController($scope, $routeParams, getLocations, $sce) {
         
         var heading = google.maps.geometry.spherical.computeHeading(new google.maps.LatLng(path.lat, path.lng), new google.maps.LatLng(nextPath.lat, nextPath.lng));
         
-        if (heading < 0) {
-          heading = heading + 360;
-        }
+        heading = heading + 180;
         
         heading = Math.round(heading);
         
@@ -141,9 +139,7 @@ function LocationController($scope, $routeParams, getLocations, $sce) {
     var heading = google.maps.geometry.spherical.computeHeading(new google.maps.LatLng(BOISE_LAT, BOISE_LNG), new google.maps.LatLng(nextLat, nextLng));
     console.log(heading);
     
-    if (heading < 0) {
-      heading = heading + 360;
-    }
+    heading = heading + 180;
     
     heading = Math.round(heading);
     
