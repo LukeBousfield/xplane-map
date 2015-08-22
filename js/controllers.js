@@ -101,7 +101,7 @@ function LocationController($scope, $routeParams, getLocations, $http, compHeadi
           marker.icon.rotation = heading;
           marker.setIcon(marker.icon);
         });
-      , 500);
+      }, 500);
 
     var BOISE_LAT = 43.558467;
     var BOISE_LNG = -116.202134;
