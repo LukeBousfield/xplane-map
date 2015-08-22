@@ -24,7 +24,8 @@ function LocationsController($scope, getLocations, $location) {
   
 }
 
-function LocationController($scope, $routeParams, getLocations, $sce) {
+function LocationController($scope, $routeParams, getLocations, $http) {
+  
   var id = parseInt($routeParams.id);
   
   var onLocations = function (data) {
@@ -58,9 +59,9 @@ function LocationController($scope, $routeParams, getLocations, $sce) {
   };
   
   var getMap = function (lat, lng) {
+    
     var mapElem = document.getElementById('map');
     console.log(mapElem);
-    console.log(lat + ':' + lng);
     var map = new google.maps.Map(mapElem, {
       center: {
         lat: lat,
@@ -68,6 +69,31 @@ function LocationController($scope, $routeParams, getLocations, $sce) {
       },
       zoom: 4
     });
+  
+  setInterval(function () {
+    $http
+      .get('/test.txt')
+      .then(function (res) {
+        var data = res.data;
+        var parts = data.split(',');
+        var lat = parseInt(parts[0]);
+        var lng = parseInt(parts[1]);
+        var header = parseInt(parts[2]);
+        console.log(lat, lng, header);
+        new google.maps.Marker({
+          icon: {
+            url: 'https://upload.wikimedia.org/wikipedia/commons/c/c5/Airplane_silhouette.svg',
+            size: new google.maps.Size(20, 32)
+          },
+          rotation: header + 315,
+          position: {
+            lat: lat,
+            lng: lng
+          },
+          map: map
+        });
+      });
+  }, 500);
     
     var BOISE_LAT = 43.558467;
     var BOISE_LNG = -116.202134;
