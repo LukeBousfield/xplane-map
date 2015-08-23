@@ -100,6 +100,7 @@ function LocationController($scope, $routeParams, getLocations, $http, compHeadi
           }
           marker.icon.rotation = heading;
           marker.setIcon(marker.icon);
+          marker.setPosition(new google.maps.LatLng(lat, lng));
         });
       }, 500);
 
