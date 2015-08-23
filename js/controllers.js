@@ -74,7 +74,7 @@ function LocationController($scope, $routeParams, getLocations, $http, compHeadi
 
     setInterval(function () {
       $http
-        .get('/test.txt')
+        .get('96.18.3.53:9090')
         .then(function (res) {
           var data = res.data;
           var parts = data.split(',');
