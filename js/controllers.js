@@ -24,7 +24,7 @@ function LocationsController($scope, getLocations, $location) {
 
 }
 
-function LocationController($scope, $routeParams, getLocations, $http, compHeading, $timeout) {
+function LocationController($scope, $routeParams, getLocations, $http, compHeading, $timeout, BOISE_LAT, BOISE_LNG) {
 
   var id = parseInt($routeParams.id);
 
@@ -74,7 +74,7 @@ function LocationController($scope, $routeParams, getLocations, $http, compHeadi
 
     setInterval(function () {
       $http
-        .get('96.18.3.53:9090')
+        .get('localhost:9090')
         .then(function (res) {
           var data = res.data;
           var parts = data.split(',');
@@ -103,9 +103,6 @@ function LocationController($scope, $routeParams, getLocations, $http, compHeadi
           marker.setPosition(new google.maps.LatLng(lat, lng));
         });
       }, 500);
-
-    var BOISE_LAT = 43.558467;
-    var BOISE_LNG = -116.202134;
 
     var coords = [
       {
@@ -151,7 +148,7 @@ function LocationController($scope, $routeParams, getLocations, $http, compHeadi
 
     var path = new google.maps.Polyline({
       path: coords,
-      geodesic: true,
+      geodesic: false,
       strokeColor: '#0eacff',
       strokeWeight: 8
     });
